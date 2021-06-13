@@ -6,9 +6,9 @@ pipeline {
                 sh 'ls -lrth'
                 sh "docker build -t myapp ."
                 sh "docker run -idt -p 5000:5000 myapp"
-                // sh "docker kill $(docker ps -q)"
-                // sh "docker rm $(docker ps -a -q)"
-                // sh "docker rmi $(docker images -q)"
+                sh "sudo docker run --rm -dit -p 5000:5000 --name=myappcontainer myapp"
+                sleep time: 250, unit: 'MILLISECONDS'
+                sh "sudo docker stop myappcontainer"
             }
         }
     }
