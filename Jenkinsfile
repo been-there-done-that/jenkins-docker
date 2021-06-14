@@ -9,6 +9,8 @@ pipeline {
                 sleep time: 2500, unit: 'MILLISECONDS'
                 sh "sudo docker stop myappcontainer"
                 sh "echo ${env}"
+                sh "echo env.BRANCH_NAME ${env.BRANCH_NAME}"
+                sh "echo env.CHANGE_ID ${env.CHANGE_ID}"
             }
         }
     }
