@@ -11,8 +11,15 @@ pipeline {
                 sh "echo ${env}"
                 sh "echo env.BRANCH_NAME ${env.BRANCH_NAME}"
                 sh "echo env.CHANGE_ID ${env.CHANGE_ID}"
-                sh "echo BRANCH_NAME ${BRANCH_NAME}"
             }
         }
+        stage('Test') {
+        steps {
+            script {
+                branchName = sh(label: 'getBranchName', returnStdout: true, script: 'git rev-parse --abbrev-ref HEAD').trim()
+                println branchName
+            }   
+        }
+      }
     }
 }
