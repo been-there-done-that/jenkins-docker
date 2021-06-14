@@ -11,6 +11,7 @@ pipeline {
                 sh "echo ${env}"
                 sh "echo env.BRANCH_NAME ${env.BRANCH_NAME}"
                 sh "echo env.CHANGE_ID ${env.CHANGE_ID}"
+                sh "echo BRANCH_NAME ${BRANCH_NAME}"
             }
         }
     }
